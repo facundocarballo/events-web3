@@ -46,11 +46,13 @@ export const loadDappData = async () => {
 
     const ERC20_Events = await getAllEventsFromERC20(ContractERC20, currentBlock - 10, currentBlock, "USDT", wallet);
 
+    const chainID = await window.web3.eth.getChainId();
 
     return {
         ContractEvents, ContractERC20,
         wallet, value,
-        SmartContract_Events, ERC20_Events
+        SmartContract_Events, ERC20_Events,
+        chainID
     };
 
 }

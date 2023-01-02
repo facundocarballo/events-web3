@@ -12,6 +12,7 @@ export const DappProvider = (props) => {
     const [isContractEvents, setIsContractEvents] = React.useState(true);
     const [Events, setEvents] = React.useState(null);
     const [ERC20_Events, setERC20_Events] = React.useState(null);
+    const [chainID, setChainID] = React.useState(null);
 
     const setAllValues = async () => {
         const data = await loadDappData();
@@ -21,6 +22,7 @@ export const DappProvider = (props) => {
         setValue(data.value);
         setEvents(data.SmartContract_Events);
         setERC20_Events(data.ERC20_Events);
+        setChainID(data.chainID);
     };
 
     const values = {
@@ -28,7 +30,8 @@ export const DappProvider = (props) => {
         ContractERC20, value,
         setAllValues,
         isContractEvents, setIsContractEvents,
-        Events, ERC20_Events
+        Events, ERC20_Events,
+        chainID
     };
 
     return <DappContext.Provider value={values} {...props} />;
