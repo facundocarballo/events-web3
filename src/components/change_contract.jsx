@@ -11,7 +11,7 @@ export const ChangeContract = () => {
     };
     // Component
     return(
-        <Button w='250px' bg='blue.300' borderRadius={6} onClick={handleChangeContract}>
+        <Button w='250px' variant='callToAction' onClick={handleChangeContract}>
             {isContractEvents ? "USDT Events" : "Smart Contract Events"}
         </Button>
     );

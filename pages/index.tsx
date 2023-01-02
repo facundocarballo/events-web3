@@ -24,15 +24,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Box h="10px" />
+      <Box h="20px" />
       <NavBar />
       {wallet == null ? (
         <AlertConnectWallet />
       ) : (
         <VStack>
           <Value />
+          <Box h="20px" />
           <AllEvents title="ALL EVENTS" />
+          <Box h='10px' />
           <AllEvents title="FILTERED EVENTS" />
+          <Box h='20px' />
           <ChangeContract />
         </VStack>
       )}

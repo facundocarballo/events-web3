@@ -3,21 +3,16 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
-  Spinner,
-  Text,
 } from "@chakra-ui/react";
 import { useProvider } from "../context";
 
 export const AllEventsTable = ({ all, erc20 }) => {
   // Attributes
   const { Events, ERC20_Events } = useProvider();
-
   // Methods
   // Components
   return (

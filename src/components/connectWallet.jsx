@@ -1,11 +1,12 @@
 import React from "react";
-import { Button, Spinner, HStack } from "@chakra-ui/react";
+import { Button, Spinner, HStack, Spacer, useColorModeValue} from "@chakra-ui/react";
 import { useProvider } from "../context";
 
 export const ConnectWallet = () => {
   // Attributes
   const [loading, setLoading] = React.useState(false);
   const { wallet, setAllValues } = useProvider();
+  const bg = useColorModeValue('blue.300', 'blue.400');
   // Methods
   const handleConnect = async () => {
     setLoading(true);
@@ -22,21 +23,22 @@ export const ConnectWallet = () => {
     <>
       {wallet == null ? (
         loading ? (
-          <HStack w="150px" borderRadius={6} bg="blue.300">
+          <HStack w="150px" h='40px' borderRadius={6} bg={bg}>
+            <Spacer />
             <Spinner />
+            <Spacer />
           </HStack>
         ) : (
           <Button
             w="150px"
-            borderRadius={6}
-            bg="blue.300"
+            variant='callToAction'
             onClick={handleConnect}
           >
             Connect Wallet
           </Button>
         )
       ) : (
-        <Button w="150px" borderRadius={6} bg="blue.300">
+        <Button w="150px" variant='callToAction'>
           {getShortAddressWallet(wallet)}
         </Button>
       )}

@@ -8,7 +8,8 @@ import {
   HStack,
   Text,
   Spacer,
-  Box
+  Box,
+  useColorModeValue
 } from "@chakra-ui/react";
 import { AllEventsTable } from "../components/all_events_table.jsx";
 import { useProvider } from "../context.jsx";
@@ -16,7 +17,7 @@ import { useProvider } from "../context.jsx";
 export const AllEvents = ({title}) => {
   // Attributes
   const { isContractEvents } = useProvider();
-
+  const colorText = useColorModeValue('gray.700', 'gray.200');
   // Methods
   // Component
   return (
@@ -26,9 +27,9 @@ export const AllEvents = ({title}) => {
           <AccordionButton>
             <HStack w="full">
               <Box w="10px" />
-              <Text color="white">{title}</Text>
+              <Text color={colorText}>{title}</Text>
               <Spacer />
-              <AccordionIcon color="white" />
+              <AccordionIcon color={colorText} />
             </HStack>
           </AccordionButton>
         </h2>

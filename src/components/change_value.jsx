@@ -46,7 +46,7 @@ export const ChangeValue = ({ func, increment }) => {
           <Spacer />
         </HStack>
       ) : (
-        <Button w="30px" bg='gray.600' borderRadius={6} onClick={handleChangeValue} fontSize='xl' fontWeight='bold'>
+        <Button w="30px" variant='modifyValue' onClick={handleChangeValue} fontSize='xl' fontWeight='bold'>
             {increment ? <AddIcon />: <MinusIcon />}
         </Button>
       )}
