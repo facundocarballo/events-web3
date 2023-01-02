@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useProvider } from "../context";
 
-export const AllEventsTable = () => {
+export const AllEventsTable = ({ all }) => {
   // Attributes
   const { Events } = useProvider();
 
@@ -32,16 +32,23 @@ export const AllEventsTable = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {
-            Events.all.map((e, idx) => 
-              <Tr key={idx}>
-                <Td>{e.date}</Td>
-                <Td>{e.wallet}</Td>
-                <Td>{e.value}</Td>
-                <Td>{e.msg}</Td>
-              </Tr>
-            )
-          }
+          {all
+            ? Events.all.map((e, idx) => (
+                <Tr key={idx}>
+                  <Td>{e.date}</Td>
+                  <Td>{e.wallet}</Td>
+                  <Td>{e.value}</Td>
+                  <Td>{e.msg}</Td>
+                </Tr>
+              ))
+            : Events.filtered.map((e, idx) => (
+                <Tr key={idx}>
+                  <Td>{e.date}</Td>
+                  <Td>{e.wallet}</Td>
+                  <Td>{e.value}</Td>
+                  <Td>{e.msg}</Td>
+                </Tr>
+              ))}
         </Tbody>
       </Table>
     </TableContainer>

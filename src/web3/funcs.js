@@ -42,7 +42,7 @@ export const loadDappData = async () => {
     const currentBlock = await web3.eth.getBlockNumber();
     const fromBlock = currentBlock - 30000;
 
-    const SmartContract_Events = await getAllEvents(ContractEvents, fromBlock, currentBlock);
+    const SmartContract_Events = await getAllEvents(ContractEvents, fromBlock, currentBlock, wallet);
 
     const ERC20_Events = null //await getAllEventsFromERC20(ContractERC20, fromBlock, currentBlock, "USDT");
 

@@ -30,7 +30,7 @@ export const AllEvents = ({title}) => {
           </AccordionButton>
         </h2>
         <AccordionPanel>
-            <AllEventsTable />
+            <AllEventsTable all={title == "ALL EVENTS"} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
