@@ -14,9 +14,9 @@ import {
 } from "@chakra-ui/react";
 import { useProvider } from "../context";
 
-export const AllEventsTable = ({ all }) => {
+export const AllEventsTable = ({ all, erc20 }) => {
   // Attributes
-  const { Events } = useProvider();
+  const { Events, ERC20_Events } = useProvider();
 
   // Methods
   // Components
@@ -24,27 +24,57 @@ export const AllEventsTable = ({ all }) => {
     <TableContainer>
       <Table variant="simple">
         <Thead>
-          <Tr>
-            <Th>Date</Th>
-            <Th>Wallet</Th>
-            <Th>Amount</Th>
-            <Th>Type</Th>
-          </Tr>
+          {!erc20 ? (
+            <Tr>
+              <Th>Date</Th>
+              <Th>Wallet</Th>
+              <Th>Amount</Th>
+              <Th>Type</Th>
+            </Tr>
+          ) : (
+            <Tr>
+              <Th>Date</Th>
+              <Th>From</Th>
+              <Th>To</Th>
+              <Th>Amount</Th>
+              <Th>Type</Th>
+            </Tr>
+          )}
         </Thead>
         <Tbody>
-          {all
-            ? Events.all.map((e, idx) => (
+          {!erc20
+            ? all
+              ? Events.all.map((e, idx) => (
+                  <Tr key={idx}>
+                    <Td>{e.date}</Td>
+                    <Td>{e.wallet}</Td>
+                    <Td>{e.value}</Td>
+                    <Td>{e.msg}</Td>
+                  </Tr>
+                ))
+              : Events.filtered.map((e, idx) => (
+                  <Tr key={idx}>
+                    <Td>{e.date}</Td>
+                    <Td>{e.wallet}</Td>
+                    <Td>{e.value}</Td>
+                    <Td>{e.msg}</Td>
+                  </Tr>
+                ))
+            : all
+            ? ERC20_Events.all.map((e, idx) => (
                 <Tr key={idx}>
                   <Td>{e.date}</Td>
-                  <Td>{e.wallet}</Td>
+                  <Td>{e.from}</Td>
+                  <Td>{e.to}</Td>
                   <Td>{e.value}</Td>
                   <Td>{e.msg}</Td>
                 </Tr>
               ))
-            : Events.filtered.map((e, idx) => (
+            : ERC20_Events.filtered.map((e, idx) => (
                 <Tr key={idx}>
                   <Td>{e.date}</Td>
-                  <Td>{e.wallet}</Td>
+                  <Td>{e.from}</Td>
+                  <Td>{e.to}</Td>
                   <Td>{e.value}</Td>
                   <Td>{e.msg}</Td>
                 </Tr>

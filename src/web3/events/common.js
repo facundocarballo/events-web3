@@ -42,6 +42,18 @@ export const getEventFilterByTo = async (eventName, Contract, addressAccount, fr
     return eventInfo;
 }
 
+export const getEventsFilterByFrom = async (eventName, Contract, wallet, fromBlock, toBlock) => {
+    const eventInfo = await Contract.getPastEvents(eventName, {
+        filter: {
+            from: wallet
+        },
+        fromBlock: fromBlock,
+        toBlock: toBlock
+    });
+    
+    return eventInfo;
+}   
+
 export const sortEvents = (events) => {
     let arr = new Array();
     

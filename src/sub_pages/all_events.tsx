@@ -11,9 +11,12 @@ import {
   Box
 } from "@chakra-ui/react";
 import { AllEventsTable } from "../components/all_events_table.jsx";
+import { useProvider } from "../context.jsx";
 
 export const AllEvents = ({title}) => {
   // Attributes
+  const { isContractEvents } = useProvider();
+
   // Methods
   // Component
   return (
@@ -30,7 +33,7 @@ export const AllEvents = ({title}) => {
           </AccordionButton>
         </h2>
         <AccordionPanel>
-            <AllEventsTable all={title == "ALL EVENTS"} />
+            <AllEventsTable all={title == "ALL EVENTS"} erc20={!isContractEvents} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

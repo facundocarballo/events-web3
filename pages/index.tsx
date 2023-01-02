@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   // Attributes
-  const { wallet } = useProvider();
+  const { wallet, isContractEvents } = useProvider();
   // Methods
 
   // Component
